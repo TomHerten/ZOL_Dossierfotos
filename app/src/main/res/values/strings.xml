@@ -1,0 +1,25 @@
+<resources>
+
+    <!-- App title. -->
+    <string name="app_name">ZOL Dossierfoto\'s</string>
+
+    <!-- Values for our UI widgets. -->
+    <string name="logo">Ziekenhuis Oost-Limburg</string>
+    <string name="loginTitle">Dossierfoto\'s</string>
+    <string name="username">Gebruikersnaam</string>
+    <string name="password">Wachtwoord</string>
+    <string name="login">Inloggen</string>
+    <string name="logout">Uitloggen</string>
+    <string name="info">Meer informatie</string>
+    <string name="editView">Aanpassen</string>
+    <string name="recycleView">Verwijderen</string>
+    <string name="left">left_arrow</string>
+    <string name="right">right_arrow</string>
+    <string name="photoView">Grote foto</string>
+    <string name="cardDescription">Preview foto</string>
+    <string name="scan">Scan opname-nummer</string>
+    <string name="camera">Maak foto\'s</string>
+    <string name="upload">Upload foto\'s</string>
+    <string name="opname">Opnamenummer: %s</string>
+
+</resources>

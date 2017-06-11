@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- View group where the child views and objects can be positioned relative to each other
+    (left-of, below,...). There are also nested relative and lineair layouts inside this layout
+    for better control in positioning. -->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    tools:context="com.zol_dossierfotos.MainActivity"
+    tools:ignore="NestedWeights">
+
+    <!-- Patient information layout. (TOP) -->
+    <RelativeLayout
+        android:id="@+id/rlInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent">
+
+        <!-- Patient name layout. -->
+        <LinearLayout
+            android:id="@+id/llName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="3dp"
+            android:paddingEnd="0dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="0dp"
+            android:orientation="horizontal"
+            android:layout_toStartOf="@+id/info_button">
+
+            <!-- Patient name label. -->
+            <TextView
+                android:id="@+id/patientNaam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+        <!-- Patient specifics layout. -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="0dp"
+            android:paddingStart="3dp"
+            android:paddingEnd="0dp"
+            android:paddingBottom="3dp"
+            android:layout_below="@+id/llName"
+            android:layout_toStartOf="@+id/info_button">
+
+            <!-- Patient specifics label. -->
+            <TextView
+                android:id="@+id/patientInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+        <!-- Button that launches the full patient info popup. -->
+        <ImageView
+            android:id="@+id/info_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="50dp"
+            android:contentDescription="@string/info"
+            android:paddingEnd="0dp"
+            android:paddingStart="0dp"
+            android:paddingTop="0dp"
+            android:src="@mipmap/info_icon"
+            android:visibility="invisible" />
+
+        <!-- Button for logout. -->
+        <ImageView
+            android:id="@+id/logout"
+            android:layout_width="45dp"
+            android:layout_height="62dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="0dp"
+            android:contentDescription="@string/logout"
+            android:paddingEnd="5dp"
+            android:paddingStart="0dp"
+            android:paddingTop="0dp"
+            android:src="@mipmap/logout_icon"
+            android:visibility="visible" />
+
+    </RelativeLayout>
+
+    <!-- Photo layout. (MIDDLE) -->
+    <RelativeLayout
+        android:id="@+id/rlImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rlInfo"
+        android:layout_above="@+id/rlSpinner"
+        android:background="@color/colorPrimary">
+
+        <!-- Photo view. -->
+        <ImageView
+            android:id="@+id/photo_view"
+            android:src="@mipmap/no_image_icon"
+            android:contentDescription="@string/photoView"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"/>
+
+        <!-- Edit button. -->
+        <ImageView
+            android:id="@+id/edit_image"
+            android:src="@mipmap/crop_rotate_icon"
+            android:contentDescription="@string/editView"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:paddingBottom="12dp"
+            android:paddingEnd="0dp"
+            android:paddingStart="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:visibility="invisible"/>
+
+        <!-- Delete button. -->
+        <ImageView
+            android:id="@+id/delete_image"
+            android:src="@mipmap/recycle_icon"
+            android:contentDescription="@string/recycleView"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:paddingBottom="12dp"
+            android:paddingEnd="10dp"
+            android:paddingStart="0dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:visibility="invisible"/>
+
+        <!-- Photo index label. -->
+        <TextView
+            android:id="@+id/photo_index"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:paddingTop="12dp"
+            android:paddingEnd="12dp"
+            android:paddingStart="0dp"
+            android:gravity="end"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="16sp"/>
+
+        <!-- Layout for left button. -->
+        <LinearLayout
+            android:id="@+id/left_image"
+            android:layout_width="50dp"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:padding="0dp"
+            android:background="#808080"
+            android:alpha="0.50"
+            android:visibility="invisible">
+
+            <!-- Left button. -->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:contentDescription="@string/left"
+                android:src="@mipmap/arrow_left" />
+
+        </LinearLayout>
+
+        <!-- Layout for right button. -->
+        <LinearLayout
+            android:id="@+id/right_image"
+            android:layout_width="50dp"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:padding="0dp"
+            android:background="#808080"
+            android:alpha="0.50"
+            android:visibility="invisible">
+
+            <!-- right button. -->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:contentDescription="@string/right"
+                android:src="@mipmap/arrow_right" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <!-- Spinner layout. (BETWEEN) -->
+    <RelativeLayout
+        android:id="@+id/rlSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/rlPhotoBar"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:background="@color/colorAccent">
+
+        <!-- Spinner dropdown -->
+        <Spinner
+            android:id="@+id/categorieSpinner"
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="16sp">
+        </Spinner>
+
+    </RelativeLayout>
+
+    <!-- Thumbnail layout. (BELOW&INVISIBLE FOR PHONES) -->
+    <RelativeLayout
+        android:id="@+id/rlPhotoBar"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tlButtons"
+        android:visibility="gone">
+
+        <!-- View containing the cardView items. -->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv"
+            android:scrollbars="none"
+            android:layout_width="match_parent"
+            android:layout_height="148dp"
+            android:paddingStart="5dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="5dp"
+            android:background="@color/colorPrimary"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"/>
+
+    </RelativeLayout>
+
+    <!-- Button layout. (BOTTOM) -->
+    <LinearLayout
+        android:id="@+id/tlButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:stretchColumns="0,2,4"
+        android:padding="5dp"
+        android:background="@color/colorPrimary">
+
+            <!-- Scan button built from a textView and an imageView.
+                    So to call an onclick event from the user we check the layout onclick. -->
+            <LinearLayout
+                android:id="@+id/scan_button"
+                android:layout_width="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:layout_height="65dp"
+                android:padding="3dp"
+                android:background="#FFFFFF">
+
+                <!-- Scan button textView. -->
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.67"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/scan"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    android:textColor="#000000"/>
+
+                <!-- Scan button imageView. -->
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.33"
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="@string/scan"
+                    android:src="@mipmap/barcode_scanner_icon" />
+
+            </LinearLayout>
+
+
+            <!-- TextView for padding. -->
+            <TextView
+                android:layout_width="3dp"
+                android:layout_height="wrap_content"/>
+
+
+            <!-- Camera button built from a textView and an imageView.
+                    So to call an onclick event from the user we check the layout onclick. -->
+            <LinearLayout
+                android:id="@+id/camera_button"
+                android:layout_width="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:layout_height="65dp"
+                android:padding="3dp"
+                android:background="#FFFFFF">
+
+                <!-- Camera button textView. -->
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.67"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/camera"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    android:textColor="#000000"/>
+
+                <!-- Camera button imageView. -->
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.33"
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="@string/camera"
+                    android:src="@mipmap/camera_icon" />
+
+            </LinearLayout>
+
+
+            <!-- TextView for padding. -->
+            <TextView
+                android:layout_width="3dp"
+                android:layout_height="wrap_content"/>
+
+
+            <!-- Upload button built from a textView and an imageView.
+                        So to call an onclick event from the user we check the layout onclick. -->
+            <LinearLayout
+                android:id="@+id/upload_button"
+                android:layout_width="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:layout_height="65dp"
+                android:padding="3dp"
+                android:background="#FFFFFF">
+
+                <!-- Upload button textView. -->
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.67"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/upload"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    android:textColor="#000000"/>
+
+                <!-- Upload button imageView. -->
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.33"
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="@string/upload"
+                    android:src="@mipmap/upload_icon" />
+
+            </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
